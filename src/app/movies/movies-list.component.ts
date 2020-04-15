@@ -1,40 +1,34 @@
-import {Component} from '@angular/core'
+import {Component, OnInit} from '@angular/core'
+import { MovieService } from './shared/movie.service'
+import { ToastrService } from '../common/toastr.service'
+import { ActivatedRoute } from "@angular/router";
 
+declare let toastr
 @Component({
-  selector:"movie-list",
+
   template:`
-  <div class="panel panel-primary">
-  <div class="panel-heading">List All Movies</div>
-  <div class="panel-body">
-       <div class="row">
-          <div class="col-md-3 col-xs-12" >
-            <div class="well hoverwell thumbnail">
-               <h4>Name:{{movie.name}}</h4>
-               <h4>Director: {{movie.director}}</h4>
-               <h4>Writer: {{movie.writer}}</h4>
-               <h4>Genre: {{movie.genre}}</h4>
-               </div>
-          </div>
-       </div>
-  </div>
-  <div class="panel-footer"></div>
-</div>
+  <div>
+  <h1>5D Cinamax Movie Lists  </h1>
+  <hr>
+    <div class="row">
+      <div class="col-md-4" *ngFor="let movie of movies ">
+        <movie-thumbnail   [movie]="movie"></movie-thumbnail>
 
-  `
+      </div>
+    </div>
+  </div>  `
+
 })
-export class MovieListComponent {
-  movie ={
-    id: 1,
-    name:"Act of Valor",
-    genre:"Action",
-    director:"steve venviko",
-    RunTime:"2 hours",
-    Released: "20-2-2011",
-    Actors:["steve","john","jane"],
-    Writer:"Denzel",
-    Rating:"3 stars",
-    image:""
 
-  }
+export class MovieListComponent implements OnInit {
+  movies:any
+
+ constructor(private movieService:MovieService, private toastr:ToastrService,private route:ActivatedRoute){
+
+ }
+  ngOnInit(){
+   this.movies = this.route.snapshot.data ['movies']
+ }
+
 
 }
