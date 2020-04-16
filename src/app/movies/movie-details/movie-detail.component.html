@@ -1,0 +1,29 @@
+<div class="container">
+  <img [src]="movie?.imageUrl" [alt]="movie?.name" class="movie-image">
+
+  <div class="row">
+    <div class="col-md-5">
+      <h2>{{movie?.name}} </h2>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="col-md-7">
+      <div><strong>Date:</strong> {{movie?.date}}</div>
+      <div><strong>Time:</strong> {{movie?.time}}</div>
+      <div><strong>Price:</strong> Ugx {{movie?.price}}</div>
+    </div>
+    <div class="col-md-4">
+      <address>
+        <strong>Address:</strong><br />
+        {{movie?.location?.address}}<br />
+        {{movie?.location?.city}}, {{movie?.location?.country}}
+      </address>
+      <button class="btn btn-info black" [routerLink]="['/movies']" >View More</button>
+    </div>
+
+  </div>
+
+
+</div>
