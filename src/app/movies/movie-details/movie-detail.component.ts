@@ -9,7 +9,7 @@ templateUrl:'./movie-detail.component.html',
 styles:[
   `
 .container{padding-left:20px;padding-right:20px;}
-.movie-image{height:100px;}
+.movie-image{height:250px;width:200px;}
 .black{color:#000;font-weight:bold;}
   `
 ]
